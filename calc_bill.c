@@ -12,6 +12,8 @@ struct Menu
     float   Price;
 };
 
+int read_file_by_delimiter(FILE *fP, char output[CHARS_MAX], int max_char_read, int delimiter);
+
 int main(void)
 {
     struct Menu snackBar[ITEMS_MAX];
@@ -25,21 +27,33 @@ int main(void)
         return EXIT_ERROR;
     }
 
-    // read file by delimiter
-    char read_word[CHARS_MAX];
-    int i = 0;
+    char word[CHARS_MAX];
 
-    int read_char = fgetc(filePointer);
+    read_file_by_delimiter(filePointer, word, CHARS_MAX, ':');
 
-    while (read_char != EOF && read_char != ':')
-    {
-        read_word[i++] = read_char;
-
-        read_char = fgetc(filePointer);
-    }
-
-    printf ("%s\n", read_word);
+    printf ("%s\n", word);
     
 
     return EXIT_SUCCESS;   
+}
+
+// Read word from file from actual position up to the given delimiter or EOF
+int read_file_by_delimiter(FILE *fP, char output[CHARS_MAX], int max_char_read, int delimiter)
+{
+    // read file by delimiter
+    int i = 0;
+
+    int read_char = fgetc(fP);
+
+    while (read_char != EOF && read_char != delimiter && i < max_char_read)
+    {
+        output[i++] = read_char;
+
+        read_char = fgetc(fP);
+    }
+
+    // Put null character at end of the string
+    output[i] = '\0';
+
+    return EXIT_SUCCESS;
 }
