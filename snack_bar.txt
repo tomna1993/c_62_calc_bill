@@ -1,10 +1,10 @@
-Burger: $9.50
-Vegan Burger: $11.00
-Hot Dog: $5.00
-Cheese Dog: $7.00
-Fries: $5.00
-Cheese Fries: $6.00
-Cold Pressed Juice: $7.00
-Cold Brew: $3.00
-Water: $2.00
-Soda: $2.00
+Burger: 9.50
+Vegan Burger: 11.00
+Hot Dog: 5.00
+Cheese Dog: 7.00
+Fries: 5.00
+Cheese Fries: 6.00
+Cold Pressed Juice:7.00
+Cold Brew: 3.00
+Water:2.00
+Soda: 2.00
