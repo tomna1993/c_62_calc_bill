@@ -25,6 +25,20 @@ int main(void)
         return EXIT_ERROR;
     }
 
+    // read file by delimiter
+    char read_word[CHARS_MAX];
+    int i = 0;
+
+    int read_char = fgetc(filePointer);
+
+    while (read_char != EOF && read_char != ':')
+    {
+        read_word[i++] = read_char;
+
+        read_char = fgetc(filePointer);
+    }
+
+    printf ("%s\n", read_word);
     
 
     return EXIT_SUCCESS;   
