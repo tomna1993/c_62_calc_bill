@@ -141,7 +141,7 @@ int print_struct(struct Menu menu_struct[ITEMS_MAX], int length)
 {
     for (int i = 0; i < length; i++)
     {
-        printf ("%s: %.2f\n", menu_struct[i].Item, menu_struct[i].Price);
+        printf ("%s: $%.2f\n", menu_struct[i].Item, menu_struct[i].Price);
     }
 
     return EXIT_SUCCESS;
