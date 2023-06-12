@@ -201,14 +201,17 @@ float search_item_in_menu(struct Menu menu[ITEMS_MAX], char item[CHARS_MAX], int
 	char menu_item[max_string_length];
 	char choosen_item[max_string_length];
 
-	for (int j = 0, length = strlen(item); j < length; j++)
+	int j = 0;
+
+	for (int length = strlen(item); j < length; j++)
 	{
 		choosen_item[j] = tolower(item[j]);
 	}
+	choosen_item[j] = '\0';
 
 	for (int i = 0; i <= items_in_menu; i++)
 	{
-		int j = 0;
+		j = 0;
 		for (int length = strlen(menu[i].Item); j < length; j++)
 		{
 			menu_item[j] = tolower(menu[i].Item[j]);
