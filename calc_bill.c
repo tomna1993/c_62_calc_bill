@@ -173,11 +173,13 @@ float ask_user_for_items(struct Menu menu[ITEMS_MAX], int max_items_to_read, int
 	{
 		strcpy(menu[i].UserItem, get_string("Enter a food item: "));
 
+		// In case of no input (user hits ENTER) return with the bill
 		if (strlen(menu[i].UserItem) == 0)
 		{
 			break;
 		}    
 
+		// Find the item from user input in menu and return its price
 		float price = search_item_in_menu(menu, menu[i].UserItem, max_items_to_read, max_string_length);
 
 		if (price == 0.0)
@@ -188,6 +190,7 @@ float ask_user_for_items(struct Menu menu[ITEMS_MAX], int max_items_to_read, int
 
 		i++;
 
+		// Calculate bill	
 		bill += get_float("Pieces: ") * price;
 	} 
 	while (i <= max_items_to_read);
@@ -203,6 +206,7 @@ float search_item_in_menu(struct Menu menu[ITEMS_MAX], char item[CHARS_MAX], int
 
 	int j = 0;
 
+	// Convert choosen item letters into lowercase latters
 	for (int length = strlen(item); j < length; j++)
 	{
 		choosen_item[j] = tolower(item[j]);
@@ -211,6 +215,7 @@ float search_item_in_menu(struct Menu menu[ITEMS_MAX], char item[CHARS_MAX], int
 
 	for (int i = 0; i <= items_in_menu; i++)
 	{
+		// Convert menu item letters into lowercase letters
 		j = 0;
 		for (int length = strlen(menu[i].Item); j < length; j++)
 		{
@@ -218,6 +223,7 @@ float search_item_in_menu(struct Menu menu[ITEMS_MAX], char item[CHARS_MAX], int
 		}
 		menu_item[j] = '\0';
 
+		// Compare user and menu item and return price
 		if (strcmp(menu_item, choosen_item) == 0)
 		{
 			return menu[i].Price;
